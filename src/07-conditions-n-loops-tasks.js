@@ -26,8 +26,17 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  if (num % 15 === 0) {
+    return 'FizzBuzz';
+  }
+  if (num % 3 === 0) {
+    return 'Fizz';
+  }
+  if (num % 5 === 0) {
+    return 'Buzz';
+  }
+  return num;
 }
 
 /**
@@ -78,8 +87,11 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  if (a < b + c && c < a + b && b < a + c) {
+    return true;
+  }
+  return false;
 }
 
 /**
@@ -163,7 +175,7 @@ function findFirstSingleChar(/* str */) {
   throw new Error('Not implemented');
   // const arr = str.split('');
   // const array = arr.filter((item, index) => arr.indexOf(item) === index);
-  // if (array.length  0) {
+  // if (array.length === 0) {
   //   return null;
   // }
   // return array[0];

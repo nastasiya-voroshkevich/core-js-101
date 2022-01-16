@@ -263,6 +263,7 @@ function getSecondItems(arr) {
  */
 function propagateItemsByPositionIndex(/* arr */) {
   throw new Error('Not implemented');
+  // return arr.map((item) => arr.splice(arr.indexOf(item) + 1, 0, item + 1));
 }
 
 /**
