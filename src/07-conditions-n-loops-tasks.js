@@ -171,14 +171,14 @@ function isInsideCircle(/* circle, point */) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
-  // const arr = str.split('');
-  // const array = arr.filter((item, index) => arr.indexOf(item) === index);
-  // if (array.length === 0) {
-  //   return null;
-  // }
-  // return array[0];
+function findFirstSingleChar(str) {
+  // throw new Error('Not implemented');
+  const arr = str.split('');
+  const array = arr.find((item, index, a) => a.indexOf(item) === a.lastIndexOf(item));
+  if (array) {
+    return array[0];
+  }
+  return null;
 }
 
 /**
@@ -203,8 +203,33 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  // throw new Error('Not implemented');
+  if (a < b && isStartIncluded && isEndIncluded) {
+    return `[${a}, ${b}]`;
+  }
+  if (a < b && isStartIncluded && !isEndIncluded) {
+    return `[${a}, ${b})`;
+  }
+  if (a < b && !isStartIncluded && isEndIncluded) {
+    return `(${a}, ${b}]`;
+  }
+  if (a < b && !isStartIncluded && !isEndIncluded) {
+    return `(${a}, ${b})`;
+  }
+  if (b < a && isStartIncluded && isEndIncluded) {
+    return `[${b}, ${a}]`;
+  }
+  if (b < a && isStartIncluded && !isEndIncluded) {
+    return `[${b}, ${a})`;
+  }
+  if (b < a && !isStartIncluded && isEndIncluded) {
+    return `(${b}, ${a}]`;
+  }
+  if (b < a && !isStartIncluded && !isEndIncluded) {
+    return `(${b}, ${a})`;
+  }
+  return false;
 }
 
 /**
