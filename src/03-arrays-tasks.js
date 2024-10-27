@@ -456,10 +456,16 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  throw new Error('Not implemented');
+function getIdentityMatrix(n) {
+  // throw new Error('Not implemented');
+  return (new Array(n).fill(0)).map((val, i) => {
+    const newArray = (new Array(n)).fill(0).map((value, j) => {
+      if (i !== j) return 0;
+      return 1;
+    });
+    return newArray;
+  });
 }
-
 /**
  * Creates an array of integers from the specified start to end (inclusive)
  *
@@ -525,8 +531,18 @@ function distinct(arr) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  // throw new Error('Not implemented');
+  const data = new Map();
+  array.map((item) => {
+    if (data.has(keySelector(item))) {
+      data.get(keySelector(item)).push(valueSelector(item));
+    } else {
+      data.set(keySelector(item), [valueSelector(item)]);
+    }
+    return item;
+  });
+  return data;
 }
 
 /**
